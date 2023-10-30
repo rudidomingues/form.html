@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+    <style>
+        /* Estilos CSS */
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group{
+            margin-bottom: 20px;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], textarea{
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"]{
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Entre em Contato</h1>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+        
+        <!-- Elemento para exibir os dados do formulário -->
+        <div id="result" style="display: none;">
+            <h2>Dados do Formulário:</h2>
+            <p><strong>Nome:</strong> <span id="result-name"></span></p>
+            <p><strong>E-mail:</strong> <span id="result-email"></span></p>
+            <p><strong>Mensagem:</strong> <span id="result-message"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("contact-form");
+        const resultDiv = document.getElementById("result");
+        const resultName = document.getElementById("result-name");
+        const resultEmail = document.getElementById("result-email");
+        const resultMessage = document.getElementById("result-message");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Exibir os dados do formulário
+            resultName.textContent = name;
+            resultEmail.textContent = email;
+            resultMessage.textContent = message;
+
+            resultDiv.style.display = "block";
+            form.style.display = "none";
+        });
+    </script>
+</body>
+</html>
